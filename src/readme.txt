@@ -1,0 +1,3 @@
+1. Firstly, compile the Puzzle.java.
+
+2. Because my sequence of move directions is up, down, left and right, the search speed depends on it. Both in DFS and BFS, but it's apparent in DFS. If I just move blank to left direction, DFS will fastly find the goal state, because left state will always on the top of the stack if we use the test initial data professor give us. The other situations will cost a lot of time to calculate.

@@ -1,0 +1,166 @@
+public boolean dfs(){
+		Tree initialTree=new Tree(new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0});
+		Tree goalTree=new Tree(new int[]{2,3,4,0,1,6,7,8,5,10,11,12,9,13,14,15});
+//	
+		Stack stack = new Stack();
+		 
+		stack.add(initialTree);
+		
+		Tree result = null;
+		
+		//To store the trees that was poped
+		Queue 
+		
+		while(!stack.isEmpty()){
+			Tree point = (Tree) stack.pop();
+			
+			if(point.getState() == goalTree.getState()){
+				result = point;
+				break;
+			}
+			
+			int zeroPos;
+			for (zeroPos=0;zeroPos<16;zeroPos++)	
+				//Find the position of zero
+				if (0==point.getState()[zeroPos])
+					break;
+			
+			//Get the zero's row and column
+			int x=zeroPos/4, y=zeroPos%4;
+			
+			String printDirection="";
+			String[] printDirectionArray=new String[MAXSTATE];
+			for (int direc=0;direc<4;direc++){
+				switch(direc){
+					case 0: up(x,y);printDirection="U"; break;
+					case 1: down(x,y);printDirection="D"; break;
+					case 2: left(x,y);printDirection="L"; break;
+					case 3: right(x,y);printDirection="R"; break;
+					default: break;
+				}
+
+				if (newX>=0 && newX<4 && newY>=0 && newY<4){
+					int[] temp=Arrays.copyOf(point.getState(), 16);
+					stack.push(item);
+					//Set zero to the new zero position
+					stat[tail].state[newZeroPos]=s.state[zeroPos];
+					//Set the value of position zeroPos before move
+					stat[tail].state[zeroPos]=s.state[newZeroPos];
+					//After moving in all directions, depth++ 
+					depth[tail]=depth[head]+1;
+					
+					//If the new move hasn't happened before, insert the new move into array
+					if (judgeHaveBeenInserted(stat[tail])==true){
+						stat[tail].printDirection=printDirection;
+						stat[tail].superState=stat[head];
+						tail++;
+					}
+					
+					
+				}
+			
+			temp.getChildren().add();
+			
+			if(children != null && !children.isEmpty()){
+		for(Tree child : children){
+		stack.add(child);
+		}
+		}
+		}
+		return result;
+//		
+		
+		while(){
+			State s=stat[top];
+			if (Arrays.equals(s.state, goal.state)){
+				goalState=s;
+				State findSuperState=goalState;
+				
+				//Constructing the path which is reverse.
+				String path="";
+				while (findSuperState!=null){
+					path=path+findSuperState.printDirection;
+					//System.out.print(findSuperState.printDirection);
+					findSuperState=findSuperState.superState;
+				}
+				System.out.println(stringReverse(path));	
+				return true;
+			}
+			
+			int zeroPos;
+			for (zeroPos=0;zeroPos<16;zeroPos++)	
+				//Find the position of zero
+				if (0==s.state[zeroPos])
+					break;
+			
+			//Get the zero's row and column
+			int x=zeroPos/4, y=zeroPos%4;
+			
+			String printDirection="";
+			String[] printDirectionArray=new String[MAXSTATE];
+			for (int direc=0;direc<4;direc++){
+				switch(direc){
+					case 0: up(x,y);printDirection="U"; break;
+					case 1: down(x,y);printDirection="D"; break;
+					case 2: left(x,y);printDirection="L"; break;
+					case 3: right(x,y);printDirection="R"; break;
+					default: break;
+				}
+
+				if (newX>=0 && newX<4 && newY>=0 && newY<4){
+					int[] temp=Arrays.copyOf(s.state, 16);
+					stat[tail]=new State(temp);
+					//Set zero to the new zero position
+					stat[tail].state[newZeroPos]=s.state[zeroPos];
+					//Set the value of position zeroPos before move
+					stat[tail].state[zeroPos]=s.state[newZeroPos];
+					//After moving in all directions, depth++ 
+					depth[tail]=depth[head]+1;
+					
+					//If the new move hasn't happened before, insert the new move into array
+					if (judgeHaveBeenInserted(stat[tail])==true){
+						stat[tail].printDirection=printDirection;
+						stat[tail].superState=stat[head];
+						tail++;
+					}
+				}
+			}
+			//After all directions move, the first state in state queue pop out
+			head++;
+			
+			//Print traversal sequence
+			//System.out.print(stat[head].printDirection);
+		}
+		return false;
+	}
+
+class Tree{
+	private int[] state = new int[16];
+	private ArrayList children = new ArrayList();
+	private String printDirection="";
+	Tree superTree = null;
+	
+	public Tree() {
+		
+    }
+	
+    public Tree(int[] state) {  
+        this.state = state;  
+    }
+	
+	public int[] getState() {
+		return state;
+	}
+	
+	public void setState(int[] state) {
+		this.state = state;
+	}
+	
+	public ArrayList getChildren() {
+		return children;
+	}
+	
+	public void setChildren(ArrayList children) {
+		this.children = children;
+	}
+}
